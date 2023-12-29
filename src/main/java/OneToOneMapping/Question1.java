@@ -1,12 +1,10 @@
-package OneToManyMapping;
-
-import java.util.List;
+package OneToOneMapping;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
-import jakarta.persistence.OneToMany;
+import jakarta.persistence.OneToOne;
 
 @Entity
 public class Question {
@@ -14,28 +12,25 @@ public class Question {
 		 @Id
 		 @Column(name="question_id")
 		private int questionId;
-		
 		private String question;
 		
-		@OneToMany (mappedBy = "question")
-		private List<Answer> answers;
+		@OneToOne   //The reason to write this is--> pick the PKey column, not all columns from Answer table
+		@JoinColumn(name="answer_id")  //The picked PKey column is given the same name here to avoid confusion. 
+		private Answer answer;
 		
 
 		public Question() {
 			super();
 		}
 		
+		public Answer getAnswer() {
+			return answer;
+		}
+
+		public void setAnswer(Answer answer) {
+			this.answer = answer;
+		}
 		
-		public List<Answer> getAnswers() {
-			return answers;
-		}
-
-
-		public void setAnswers(List<Answer> answers) {
-			this.answers = answers;
-		}
-
-
 		public int getQuestionId() {
 			return questionId;
 		}
@@ -52,15 +47,12 @@ public class Question {
 			this.question = question;
 		}
 
-
-		public Question(int questionId, String question, List<Answer> answers) {
+		public Question(int questionId, String question, Answer answer) {
 			super();
 			this.questionId = questionId;
 			this.question = question;
-			this.answers = answers;
+			this.answer = answer;
 		}
-
-		
 
 
 

@@ -18,9 +18,9 @@ public class Emp {
 	
 	@ManyToMany
 	@JoinTable(name = "emp_project_table",
-				joinColumns = {@JoinColumn(name = "eid")}, 
-				inverseJoinColumns = {@JoinColumn(name ="pid")}
-				)
+				joinColumns = {@JoinColumn(name = "EmployeeId")}, 
+				inverseJoinColumns = {@JoinColumn(name ="ProjectId")})
+	
 	List<Project> projects;
 
 	public int getEid() {

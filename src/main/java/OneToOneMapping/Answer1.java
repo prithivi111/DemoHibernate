@@ -3,6 +3,7 @@ package OneToOneMapping;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToOne;
 
 @Entity
@@ -14,14 +15,21 @@ public class Answer {
 	String answer;
 	
 	@OneToOne(mappedBy = "answer")
-	Question question;
-		
+	private Question question;
+
 	public Question getQuestion() {
 		return question;
 	}
+
 	public void setQuestion(Question question) {
 		this.question = question;
 	}
+
+	public Answer() {
+		super();
+	
+	}
+	
 	public int getAnswerId() {
 		return answerId;
 	}
@@ -35,6 +43,13 @@ public class Answer {
 		this.answer = answer;
 	}
 	
+	public Answer(int answerId, String answer) {
+		super();
+		this.answerId = answerId;
+		this.answer = answer;
+	}
+	
+
 	
 
 }

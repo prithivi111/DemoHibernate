@@ -12,7 +12,7 @@
         <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/employeeandproject</property>
         <property name="hibernate.connection.username">root</property>
                 
-        <property name="hbm2ddl.auto">update</property>
+        <property name="hbm2ddl.auto">create</property>
         
         <!--All the executed sql scripts will be visible in console-->
         <property name="show_sql">true</property>
